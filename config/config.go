@@ -10,12 +10,10 @@ type Config struct {
 	Common Common `toml:"common"`
 }
 type Common struct {
-	WithSeconds bool   `toml:"with_seconds"`
-	Schedule    string `toml:"schedule"`
-	Command     string `toml:"command"`
-	Arg1        string `toml:"arg1"`
-	Arg2        string `toml:"arg2"`
-	Arg3        string `toml:"arg3"`
+	WithSeconds bool     `toml:"with_seconds"`
+	Schedule    string   `toml:"schedule"`
+	Command     string   `toml:"command"`
+	Args        []string `toml:"args"`
 }
 
 func GetConfigFromFile(filePath string) (*Config, error) {
