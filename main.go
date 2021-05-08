@@ -4,9 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"github.com/acround/cronCommand/config"
-	"github.com/robfig/cron"
+	"github.com/acround/cronCommand/watcher"
 	"log"
-	"os/exec"
 )
 
 func main() {
@@ -16,23 +15,12 @@ func main() {
 		log.Fatalf(WrapLog("couldn't load config: %s"), err)
 		return
 	}
-	r := cron.New()
-	if c.Common.WithSeconds {
-		r = cron.New(cron.WithSeconds())
-	}
-	_, err = r.AddFunc(c.Common.Schedule, func() {
-		cmd := exec.Command(c.Common.Command, c.Common.Args...)
-		_, err := cmd.Output()
-		if err != nil {
-			fmt.Println(err.Error())
-			return
-		}
-	})
+	w, err := watcher.New(c)
 	if err != nil {
-		log.Fatalf(WrapLog("couldn't add the func: %s"), err)
+		log.Fatalf(WrapLog("couldn't create cron: %s"), err)
 		return
 	}
-	r.Run()
+	w.Run()
 }
 func WrapLog(msg string) string {
 	return fmt.Sprintf("[APP] %s", msg)
