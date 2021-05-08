@@ -22,12 +22,11 @@ func main() {
 	}
 	_, err = r.AddFunc(c.Common.Schedule, func() {
 		cmd := exec.Command(c.Common.Command, c.Common.Arg1, c.Common.Arg2, c.Common.Arg3)
-		stdout, err := cmd.Output()
+		_, err := cmd.Output()
 		if err != nil {
 			fmt.Println(err.Error())
 			return
 		}
-		fmt.Println(string(stdout))
 	})
 	if err != nil {
 		log.Fatalf(WrapLog("couldn't add the func: %s"), err)
