@@ -1,0 +1,7 @@
+[common]
+with_seconds = true
+schedule = ""
+command = ""
+arg1 = ""
+arg2 = ""
+arg3 = ""
