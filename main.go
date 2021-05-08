@@ -21,7 +21,7 @@ func main() {
 		r = cron.New(cron.WithSeconds())
 	}
 	_, err = r.AddFunc(c.Common.Schedule, func() {
-		cmd := exec.Command(c.Common.Command, c.Common.Arg1, c.Common.Arg2, c.Common.Arg3)
+		cmd := exec.Command(c.Common.Command, c.Common.Args...)
 		_, err := cmd.Output()
 		if err != nil {
 			fmt.Println(err.Error())

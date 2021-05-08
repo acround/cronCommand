@@ -1,7 +1,5 @@
 [common]
-with_seconds = true
-schedule = ""
+with_seconds = false
+schedule = "* * * * *"
 command = ""
-arg1 = ""
-arg2 = ""
-arg3 = ""
+args = ["", "", "", ""]
