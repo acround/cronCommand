@@ -1,19 +1,19 @@
 package config
 
 import (
-	"github.com/pelletier/go-toml"
 	"io/ioutil"
 	"os"
+
+	"github.com/pelletier/go-toml"
 )
 
 type Config struct {
 	Common Common `toml:"common"`
 }
 type Common struct {
-	WithSeconds bool     `toml:"with_seconds"`
-	Schedule    string   `toml:"schedule"`
-	Command     string   `toml:"command"`
-	Args        []string `toml:"args"`
+	Schedule string   `toml:"schedule"`
+	Command  string   `toml:"command"`
+	Args     []string `toml:"args"`
 }
 
 func GetConfigFromFile(filePath string) (*Config, error) {

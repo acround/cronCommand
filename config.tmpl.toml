@@ -1,5 +1,4 @@
 [common]
-with_seconds = false
 schedule = "* * * * *"
 command = ""
 args = ["", "", "", ""]

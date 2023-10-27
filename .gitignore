@@ -17,3 +17,5 @@
 .nbproject
 config.toml
 /cronCommand
+
+go.sum
